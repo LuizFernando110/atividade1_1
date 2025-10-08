@@ -66,4 +66,10 @@ public class ProdutoService {
         }
         return false;
     }
+
+    public Collection<Produto> searchProduto(String nome) {
+        return produtos.values().stream()
+            .filter(p -> p.getNome().toLowerCase().contains(nome.toLowerCase()))
+            .toList();
+    }
 }

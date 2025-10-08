@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.edu.ifr.luiz.atividade1.dto.Produto;
@@ -61,5 +62,10 @@ public class ProdutoController {
         } else {
             return ResponseEntity.notFound().build();
         }
+    }
+
+    @GetMapping("/search")
+    public Collection<Produto> seaProdutos(@RequestParam String nome) {
+        return produtoService.searchProduto(nome);
     }
 }
